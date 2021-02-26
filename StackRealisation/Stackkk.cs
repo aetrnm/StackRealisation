@@ -8,6 +8,7 @@ namespace StackRealisation
         private int _amountOfNumbers = -1;
         private int _maxSize;
 
+        //Constructors
         public Stackkk(int capacity)
         {
             _maxSize = capacity;
@@ -22,7 +23,7 @@ namespace StackRealisation
         
         public int Pop()
         {
-            if (_amountOfNumbers == -1)
+            if (IsEmpty())
             {
                 throw new InvalidOperationException("Stack empty.");
             }
@@ -37,7 +38,7 @@ namespace StackRealisation
 
         public int Peek()
         {
-            if (_amountOfNumbers == -1)
+            if (IsEmpty())
             {
                 throw new InvalidOperationException("Stack empty.");
             }
