@@ -23,9 +23,7 @@ namespace Tests
             _ints.Push(8);
             _ints.Push(5);
             
-            int peekInStack = _numbers.Peek();
-            int peekInStackkk = _ints.Peek();
-            Assert.True(peekInStack == peekInStackkk);
+            Assert.True(_numbers.Peek() == _ints.Peek());
         }
         
         [Test]
@@ -39,10 +37,7 @@ namespace Tests
             _ints.Push(8);
             _ints.Push(5);
             
-            int peekInStack = _numbers.Pop();
-            int peekInStackkk = _ints.Pop();
-            
-            Assert.True(peekInStack == peekInStackkk);
+            Assert.True(_numbers.Pop() == _ints.Pop());
         }
 
         [Test]
