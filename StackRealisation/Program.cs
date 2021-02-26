@@ -7,7 +7,12 @@ namespace StackRealisation
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Stackkk stack = new Stackkk();
+            
+            stack.Push(2);
+            Console.WriteLine(stack.Peek());
+            Console.WriteLine(stack.Pop());
+            Console.WriteLine(stack.IsEmpty());
         }
     }
 }
