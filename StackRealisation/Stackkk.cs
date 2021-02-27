@@ -5,20 +5,21 @@ namespace StackRealisation
     public class Stackkk : IStack
     {
         private int[] _numbers;
-        private int _amountOfNumbers = -1;
+        private int _indexOfLastNumber = -1;
         private int _maxSize;
+        private int _amountOfNumbers = 0;
 
         //Constructors
         public Stackkk(int capacity)
         {
             _maxSize = capacity;
-            Array.Resize(ref _numbers, _maxSize);
+            _numbers = new int[capacity];
         }
 
         public Stackkk()
         {
             _maxSize = 4;
-            Array.Resize(ref _numbers, _maxSize);
+            _numbers = new int[4];
         }
         
         public int Pop()
@@ -29,8 +30,9 @@ namespace StackRealisation
             }
             else
             {
-                int valueToReturn = _numbers[_amountOfNumbers];
-                _numbers[_amountOfNumbers] = 0;
+                int valueToReturn = _numbers[_indexOfLastNumber];
+                _numbers[_indexOfLastNumber] = 0;
+                _indexOfLastNumber--;
                 _amountOfNumbers--;
                 return valueToReturn;
             }
@@ -44,13 +46,13 @@ namespace StackRealisation
             }
             else
             {
-                return _numbers[_amountOfNumbers];
+                return _numbers[_indexOfLastNumber];
             }
         }
 
         public void Push(int item)
         {
-            if (_amountOfNumbers + 1 == _maxSize)
+            if (_amountOfNumbers == _maxSize)
             {
                 Console.WriteLine("RESIZING");
                 _maxSize *= 2;
@@ -58,13 +60,14 @@ namespace StackRealisation
                 Array.Copy(_numbers, 0, tempArray, 0, _numbers.Length);
                 _numbers = tempArray;
             }
+            _indexOfLastNumber++;
             _amountOfNumbers++;
-            _numbers[_amountOfNumbers] = item;
+            _numbers[_indexOfLastNumber] = item;
         }
 
         public bool IsEmpty()
         {
-            return _amountOfNumbers == -1;
+            return _amountOfNumbers == 0;
         }
     }
 }
